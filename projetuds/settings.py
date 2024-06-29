@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'utilisateurs',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +51,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'projetuds.urls'
+ROOT_URLCONF = 'projetuds.urls' 
+
+AUTH_USER_MODEL = "utilisateurs.Utilisateur"
 
 TEMPLATES = [
     {
