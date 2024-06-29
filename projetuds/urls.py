@@ -17,7 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from utilisateurs.views import CustomUserCreateView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('users/create/', CustomUserCreateView.as_view(), name='user-create'),
 ]
