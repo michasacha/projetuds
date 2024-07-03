@@ -16,11 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
+#from comptes.views import  CompteDetailView, DepositView, WithdrawView
 from utilisateurs.views import CustomUserCreateView
+from django.urls import path
+from comptes.views import DepotView, RetraitView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('users/create/', CustomUserCreateView.as_view(), name='user-create'),
+    path('comptes/<int:pk>/depot/', DepotView.as_view(), name='compte-depot'),
+    path('comptes/<int:pk>/retrait/', RetraitView.as_view(), name='compte-retrait'),
 ]
+
+
+ 
+    
+
+
+ 
+
+
+ 
