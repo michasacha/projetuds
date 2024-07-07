@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'utilisateurs',
     'comptes',
+    'menus',
+    'commandes',
     
 ]
  
@@ -57,6 +59,23 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+# settings.py
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    'update-weekly-menu': {
+        'task': 'menus.tasks.update_weekly_menu',
+        'schedule': crontab(0, 0, '*/7'),  # Every week at midnight
+    },
+}
 
 
 REST_FRAMEWORK = {

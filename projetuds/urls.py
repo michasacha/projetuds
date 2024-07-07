@@ -17,9 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 #from comptes.views import  CompteDetailView, DepositView, WithdrawView
+from commandes.views import CommandeCreateView
 from utilisateurs.views import CustomUserCreateView
-from django.urls import path
 from comptes.views import DepotView, RetraitView
+from menus.views import RepasListCreateAPIView, RepasRetrieveUpdateDestroyAPIView, MenuListCreateAPIView, MenuRetrieveUpdateDestroyAPIView
+
+  
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,8 +31,17 @@ urlpatterns = [
     path('users/create/', CustomUserCreateView.as_view(), name='user-create'),
     path('comptes/<int:pk>/depot/', DepotView.as_view(), name='compte-depot'),
     path('comptes/<int:pk>/retrait/', RetraitView.as_view(), name='compte-retrait'),
+    path('repass/', RepasListCreateAPIView.as_view(), name='repas-list-create'),
+    path('repass/<int:pk>/', RepasRetrieveUpdateDestroyAPIView.as_view(), name='repas-detail'),
+    path('menus/', MenuListCreateAPIView.as_view(), name='menu-list-create'),
+    path('menus/<int:pk>/', MenuRetrieveUpdateDestroyAPIView.as_view(), name='menu-detail'),
+    path('commandes/', CommandeCreateView.as_view(), name='commande-create'),
+
 ]
 
+ 
+
+ 
 
  
     
