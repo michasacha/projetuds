@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'comptes',
     'menus',
     'commandes',
+    'corsheaders',
     
 ]
  
