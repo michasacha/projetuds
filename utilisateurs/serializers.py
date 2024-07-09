@@ -15,7 +15,6 @@ class CustomUserSerializer(UserDetailsSerializer):
     photo = serializers.ImageField(source='profil_photo')
     matricule = serializers.CharField()
 
-
     class Meta(UserDetailsSerializer.Meta):
         model = Utilisateur
         fields = UserDetailsSerializer.Meta.fields + ('phoneNumber','date_nais','matricule','photo')
