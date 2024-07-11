@@ -14,8 +14,8 @@ class MenuSerializer(serializers.ModelSerializer):
         model = Menu
         fields = ['id', 'date', 'repas']
 
-def create(self, validated_data):
-        repas_data = validated_data.pop(' repas')
-        repas =  Repas.objects.create(** repas_data)
-        menu = Menu.objects.create( repas= repas, **validated_data)
-        return menu
+    def create(self, validated_data):
+            repas_data = validated_data.pop('repas')
+            repas =  Repas.objects.create(** repas_data)
+            menu = Menu.objects.create( repas= repas, **validated_data)
+            return menu
