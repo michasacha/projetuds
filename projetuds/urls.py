@@ -21,6 +21,10 @@ from commandes.views import CommandeCreateView
 from utilisateurs.views import CustomUserCreateView
 from comptes.views import DepotView, RetraitView
 from menus.views import RepasListCreateAPIView, RepasRetrieveUpdateDestroyAPIView, MenuListCreateAPIView, MenuRetrieveUpdateDestroyAPIView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
   
 
@@ -36,7 +40,9 @@ urlpatterns = [
     path('menus/', MenuListCreateAPIView.as_view(), name='menu-list-create'),
     path('menus/<int:pk>/', MenuRetrieveUpdateDestroyAPIView.as_view(), name='menu-detail'),
     path('commandes/', CommandeCreateView.as_view(), name='commande-create'),
-
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/', include('etudiants.urls')),
 ]
 
  

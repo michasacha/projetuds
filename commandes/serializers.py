@@ -4,9 +4,8 @@ from .models import Commande
 class CommandeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Commande
-        fields = ['id', 'user', 'menu', 'nombre_de_tickets', 'code_pin', 'confirmed', 'created_at', 'updated_at']
+        fields = ['id', 'user', 'menu', 'nombre_de_tickets', 'confirmed', 'created_at', 'updated_at']
         extra_kwargs = {
-            'code_pin': {'write_only': True},
             'confirmed': {'read_only': True}
         }
 

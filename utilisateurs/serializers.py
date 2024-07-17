@@ -1,6 +1,10 @@
 from rest_framework import serializers
+from rest_framework import status
 from dj_rest_auth.serializers import UserDetailsSerializer
 from .models import Utilisateur
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
 
 class UtilisateurSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,3 +34,15 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
         # créer un nouvel utilisateur avec les données validées
         user = Utilisateur.objects.create_user(**validated_data)
         return user
+    
+    class CustomRegisterView(APIView):
+     def post(self, request):
+        serializer = CustomRegisterSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            })
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
