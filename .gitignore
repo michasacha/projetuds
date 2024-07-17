@@ -3,4 +3,4 @@
 /utilisateurs/__pycache__
 /commandes/__pycache__
 /commandes/migrations/__pycache__
-db.sqlite3
+./db.sqlite3
