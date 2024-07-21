@@ -38,7 +38,7 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
     class CustomRegisterView(APIView):
      def post(self, request):
         serializer = CustomRegisterSerializer(data=request.data)
-        if serializer.is_valid():
+        if serializer.valide():
             user = serializer.save()
             refresh = RefreshToken.for_user(user)
             return Response({

@@ -10,6 +10,6 @@ class CommandeCreateView(generics.CreateAPIView):
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
-        context['confirmed_code_pin'] = self.request.data.get('confirmed_code_pin')
         return context
 
+ 
