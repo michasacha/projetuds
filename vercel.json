@@ -1,0 +1,14 @@
+{
+    "buildCommand": "sh vercel.sh",
+    "builds": [{
+        "src":"projetuds/wsgi.py",
+        "use":"@vercel/python",
+        "config":{"maxlambdasize":"15mb", "runtime": "python3.12.3"}
+    }],
+    "routes": [
+        {
+            "src":"/(.*)",
+            "dest":"projetuds/wsgi.py"
+        }
+    ]
+}

@@ -10,11 +10,6 @@ class CommandeSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
-        code_pin = validated_data.pop('code_pin')
-        confirmed_code_pin = self.context.get('confirmed_code_pin')
-
-        if code_pin != confirmed_code_pin:
-            raise serializers.ValidationError("Pin codes do not match.")
 
         commande = Commande.objects.create(**validated_data, confirmed=True)
         return commande
