@@ -42,7 +42,7 @@ urlpatterns = [
     path('commandes/', CommandeCreateView.as_view(), name='commande-create'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/', include('etudiants.urls')),
+    path('api/', include('etudiants.urls'))
 ]
 
  
